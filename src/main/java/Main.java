@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String date = "20210111";
+        String date = new DateGenerator().setRange();
         String url = "https://velog.io/@kyukim/" + date;
         Document doc = Jsoup.connect(url).get();
 
