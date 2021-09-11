@@ -10,11 +10,11 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Date currentDate = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-        String formattedDate = format.format(currentDate);
+//        Date currentDate = new Date();
+//        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+//        String formattedDate = format.format(currentDate);
 
-        String url = "https://velog.io/@kyukim/" + formattedDate;
+        String url = "https://velog.io/@kyukim/" + 20210909;
         Document doc = Jsoup.connect(url).get();
 
         OptionsBuilder optionsBuilder = OptionsBuilder.anOptions();
@@ -25,10 +25,11 @@ public class Main {
                 .build();
 
         CopyDown converter = new CopyDown(options);
-        String myHtml = doc.select(".sc-bbmXgH").toString();
+        String myHtml = doc.select(".sc-hEsumM").toString();
         String markdown = converter.convert(myHtml);
 
-        String pathName = formattedDate + ".md";
+        System.out.println(markdown);
+        String pathName = 20210909 + ".md";
         File file = new File(pathName);
         FileWriter fw = new FileWriter(file);
 
